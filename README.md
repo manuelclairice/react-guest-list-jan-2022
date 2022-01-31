@@ -1,3 +1,9 @@
+## Create a guest list app using React that allows for :
+
+1. Adding a guest using separate first name and last name fields
+2. Deleting a guest with a button
+3. Setting a guest as "attending" by clicking on a checkbox
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
