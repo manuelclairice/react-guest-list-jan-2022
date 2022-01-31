@@ -1,38 +1,170 @@
-.App {
+h1 {
+  color: #05062f;
+  text-shadow: 2px 2px rgb(3, 195, 243);
   text-align: center;
+  font-size: 3em;
+  padding-top: 30px;
+  margin-top: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  color: #05062f;
+  text-align: center;
+  font-size: 1.8em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.InputDiv {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3em;
+  align-items: center;
+}
+
+.InputDiv input {
+  border-bottom: 2px solid #05062f;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-right: 1.4em;
+  font-size: 1.3em;
+}
+
+.InputDiv label {
+  font-size: 1.3em;
+  margin-right: 0.5em;
+  font-weight: bold;
+  color: #05062f;
+}
+
+.addButton {
+  background-color: rgb(3, 195, 243);
+  border: none;
+  border-radius: 2px;
+  width: 4%;
+  padding: 10px;
+}
+
+.addButton:hover {
+  background-color: rgb(58, 213, 251);
+}
+
+.addButton:active {
+  background-color: rgb(58, 213, 251);
+  transform: translateY(4px);
+}
+
+.guestListContainer {
+  justify-content: center;
+  margin-top: 3em;
+  display: flex;
+  margin-top: 3em;
   flex-direction: column;
   align-items: center;
+}
+
+.guestListInnerContainer {
+  font-size: 1.3em;
+  display: flex;
+  flex-wrap: no-wrap;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.deleteButton {
+  background-color: rgb(204, 3, 3);
+  border: none;
+  border-radius: 2px;
+  width: 5%;
+  padding: 10px;
+  margin: 10px;
+  inline-size: fit-content;
+}
+
+.deleteButton:hover {
+  background-color: rgb(255, 56, 56);
+}
+
+.deleteButton:active {
+  background-color: rgb(255, 56, 56);
+  transform: translateY(4px);
+}
+
+.attendingTrue {
+  background-color: rgb(3, 151, 3);
+  border: none;
+  border-radius: 2px;
+  width: 5%;
+  padding: 10px;
+  margin: 10px;
+  inline-size: fit-content;
+}
+
+.attendingTrue:hover {
+  background-color: rgb(4, 199, 4);
+}
+
+.attendingTrue:active {
+  background-color: rgb(4, 199, 4);
+  transform: translateY(4px);
+}
+
+.attendingFalse {
+  background-color: rgb(204, 3, 3);
+  border: none;
+  border-radius: 2px;
+  width: 5%;
+  padding: 10px 12px;
+  margin: 10px;
+  inline-size: fit-content;
+}
+
+.attendingFalse:hover {
+  background-color: rgb(255, 56, 56);
+}
+
+.attendingFalse:active {
+  background-color: rgb(255, 56, 56);
+  transform: translateY(4px);
+}
+
+select {
+  font-size: 1.3em;
+  padding: 10px;
+  margin-bottom: 2.3em;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid;
+  color: #05062f;
+}
+
+.deleteAll {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 3em;
+}
+
+.none {
+  display: none;
+}
+
+.deleteAllButton {
+  width: 15%;
+  background-color: rgb(204, 3, 3);
+  border: none;
+  border-radius: 2px;
+  padding: 10px;
+  margin: 10px;
   color: white;
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.deleteAllButton:hover {
+  background-color: rgb(255, 56, 56);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.deleteAllButton:active {
+  background-color: rgb(255, 56, 56);
+  transform: translateY(4px);
 }

@@ -4,36 +4,35 @@ import GuestListInput from './GuestListInput';
 
 function App() {
   const baseUrl = 'https://manuel-guest.herokuapp.com/';
-  const [list, setList] = useState([]);
+  // const [list, setList] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [guestData, setGuestData] = useState('');
   const [filteredGuestData, setFilteredGuestData] = useState('');
 
-
-
   console.log(filteredGuestData);
 
   useEffect(() => {
-    async function fetchGuestdata () {
+    async function fetchGuestData() {
       const response = await fetch(`${baseUrl}/`);
       const allGuests = await response.json();
 
       setGuestData(allGuests);
-      setFilteredGuestData(allGuests)
+      setFilteredGuestData(allGuests);
     }
-    fetchGuestDta();
-
+    fetchGuestData().catch((err) => {
+      console.error(err);
+    });
   }, []);
 
-if (!filteredGuestData) {
-  return (
-    <div style={{ color: 'white', fontsize: '20px',}}>Loading...</div>
-  );
-}
+  if (!filteredGuestData) {
+    return <div style={{ color: 'white', fontsize: '20px' }}>Loading...</div>;
+  }
 
-const handleFirstNameChange = (event) => setFirstName(event.currentTarget.value);
-const handleLastNameChange = (event) => setLastName(event.currentTarget.value);
+  const handleFirstNameChange = (event) =>
+    setFirstName(event.currentTarget.value);
+  const handleLastNameChange = (event) =>
+    setLastName(event.currentTarget.value);
 
   // CREATE NEW GUEST
   async function newGuest() {
@@ -53,82 +52,84 @@ const handleLastNameChange = (event) => setLastName(event.currentTarget.value);
     setFilteredGuestData(stateCopy);
     setGuestData(stateCopy);
   }
-    const handleAddclick = () => {
-      setFirstName(firstName);
-      setLastName(lastName);
-      createNewGuest();
-    };
-    // return createdGuest;
-  // }
-
-  // const handleSubmit = (event) => {
-  //   newGuest().catch((err) => {
-  //     console.error(err);
-  //   });
-  //   event.preventDefault();
+  const handleAddClick = () => {
+    setFirstName(firstName);
+    setLastName(lastName);
+    newGuest().catch((err) => {
+      console.error(err);
+    });
   };
 
   // DELETE GUEST
-    async function removeGuest(id) {
-      const response = await fetch(`${baseUrl}/${id}`, {
-        method: 'DELETE',
-      });
-      const removedGuest = await response.json();
+  async function removeGuest(id) {
+    const response = await fetch(`${baseUrl}/${id}`, {
+      method: 'DELETE',
+    });
+    const removedGuest = await response.json();
+    setFilteredGuestData(
+      filteredGuestData.filter(
+        (deleteGuest) => deleteGuest.id !== removedGuest.id,
+      ),
+    );
+    setGuestData(
+      filteredGuestData.filter(
+        (deleteGuest) => deleteGuest.id !== removedGuest.id,
+      ),
+    );
+  }
+  const handleDeleteClick = (id) => {
+    removeGuest(id).catch((err) => {
+      console.error(err);
+    });
+  };
+
+  const handleSelectChange = (event) => {
+    console.log(event.target);
+    if (event.target.value === 'Attending') {
       setFilteredGuestData(
-        filteredGuestData.filter((deleteGuest) => deleteGuest.id !== removedGuest.id),
+        guestData.filter((guest) => guest.attending === true),
       );
-      setGuestData(
-        filteredGuestData.filter((deleteGuest) => deleteGuest.id !== removedGuest.id),
+    } else if (event.target.value === 'nonAttending') {
+      setFilteredGuestData(
+        guestData.filter((guest) => guest.attending === false),
       );
+    } else {
+      setFilteredGuestData(guestData);
     }
-    const handleDeleteClick = (id) => {
-      removeGuest(id);
-    };
-
-    const handleSelectChange = (event) =>{
-      console.log(event.target);
-      if (event.target.value === 'Attending') {
-        setFilteredGuestData(guestData.filter((guest) => guest.attending === true));
-      } else if (event.target.value === 'nonAttending') {
-        setFilteredGuestData( guestData.filter((guest) => guest.attending === false),);
-      } else {
-        setFilteredGuestData(guestData);
-      }
-    };
-
-
+  };
 
   // EDIT GUEST
+  async function editGuest(id, isAttending) {
+    const response = await fetch(`${baseUrl}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ attending: true }),
+    });
 
-    async function editGuest(id, isAttending) {
-      const response = await fetch(`${baseUrl}/${id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ attending: true }),
+    const updatedGuest = await response.json();
+    const copyGuest = [...filteredGuestData];
+    const findGuest = copyGuest.find(
+      (foundGuest) => foundGuest.id === updatedGuest.id,
+    );
+    findGuest.attending = isAttending;
+
+    setFilteredGuestData(copyGuest);
+    setGuestData(copyGuest);
+  }
+
+  const handleEditClick = (id, guestAttending) => {
+    if (!guestAttending) {
+      editGuest(id, true).catch((err) => {
+        console.error(err);
       });
-
-      const updatedGuest = await response.json();
-      const copyGuest = [...filteredGuestData];
-      const findGuest = copyGuest.find(
-        (foundGuest) => foundGuest.id === updatedGuest.id,);
-      findGuest.attending = isAttending;
-
-      setFilteredGuestData(copyGuest);
-      setGuestData(copyGuest);
+    } else {
+      editGuest(id, false).catch((err) => {
+        console.error(err);
+      });
     }
-
-    const handleEditClick = (id, guestAttending) => {
-      if (!guestAttending) {
-        editGuest(id, true);
-      } else {
-        editGuest(id, false);
-      }
-    };
-
-
-
+  };
 
   return (
     <div>
@@ -138,43 +139,55 @@ const handleLastNameChange = (event) => setLastName(event.currentTarget.value);
         </div>
         <div data-test-id="guest">
           <GuestListInput
-          firstName={firstName}
-          lastName={lastName}
-          handleFirstNameChange={handleFirstNameChange}
-          handleLastNameChange={handleLastNameChange}
-          handleAddClick={handleAddClick} />
-          <form onSubmit={event => event.preventDefault()}>
-            <select></select>
+            firstName={firstName}
+            lastName={lastName}
+            handleFirstNameChange={handleFirstNameChange}
+            handleLastNameChange={handleLastNameChange}
+            handleAddClick={handleAddClick}
+          />
+          <form onSubmit={(event) => event.preventDefault()}>
+            <select onChange={handleSelectChange}>
+              <option value="DEFAULT">Filter guests</option>
+              <option value="all">All</option>
+              <option value="Attending">Attending</option>
+              <option value="nonAttending">Non Attending</option>
+            </select>
             <div>
-              {filterGuestData.map((guest) => {
-                return(
+              {filteredGuestData.map((guest) => {
+                return (
                   <div key={guest.id}>
-                <button onClick={() => handleDeleteClick(guest.id)} type="submit"></button>
-                <button className={
-                  guest.attending === true ? 'attendingTrue' : 'attendingFalse'
-                } type="submit" onClick={() =>
-                handleEditClick(guest.id, guest.attending)}>
-                  {guest.attending === true ? ('') : ('')}
-                </button>
-                {`${guest.firstName} ${guest.lastName}`}
-              </div>
+                    <button
+                      onClick={() => handleDeleteClick(guest.id)}
+                      /* type="submit" */
+                    >
+                      Trash
+                    </button>
+                    <button
+                      className={
+                        guest.attending === true
+                          ? 'attendingTrue'
+                          : 'attendingFalse'
+                      }
+                      /* type="submit" */
+                      onClick={() => handleEditClick(guest.id, guest.attending)}
+                    >
+                      {guest.attending === true ? '' : ''}
+                    </button>
+                    {`${guest.firstName} ${guest.lastName}`}
+                  </div>
                 );
-
-              } )}
-
+              })}
             </div>
           </form>
-          <form className={guest.data.length > 1 ? 'deleteAll' : 'none'}>
-            <button
-            type="submit"
-            onClick={handleDeleteClick}>{`Delete all`}
+          <form className={guestData.length > 1 ? 'deleteAll' : 'none'}>
+            <button /* type="submit" */ onClick={handleDeleteClick}>
+              {` Delete all`}
             </button>
           </form>
-          </div>
-
+        </div>
       </section>
     </div>
   );
-            }
+}
 
-export default App
+export default App;
