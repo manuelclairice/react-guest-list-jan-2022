@@ -8,12 +8,12 @@ import GuestList from './Components/GuestListResult';
 const loadingDiv = css`
   display: flex;
   margin: 20% 0 0 600px;
-  background-color: #f5f5f5;
+  background-color: #1e247a;
 `;
 const bodyStyle = css`
-  background-color: #f5f5f5;
+  background-color: #1e247a;
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
 `;
 export function App() {
   const baseUrl = 'https://manuel-react-guestlist-jan2022.herokuapp.com';

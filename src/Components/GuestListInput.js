@@ -3,9 +3,11 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 
 const headerStyle = css`
+  background-color: #eee;
   text-align: center;
-  padding-top: 50px;
-  margin-top: 0;
+  padding: 10px 15px;
+  margin: 8px 8px 20px;
+  border-radius: 10px;
 `;
 
 const formStyle = css`
@@ -16,20 +18,30 @@ const formStyle = css`
 const inputStyle = css`
   color: grey;
   display: inline-flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 200px;
   height: 40px;
-  /* margin-bottom: 20px; */
   padding-left: 10px;
   border-radius: 10px;
 `;
 const buttonStyle = css`
   height: 45px;
-  /* border: none; */
   border-radius: 10px;
-  background-color: #008a00;
-  color: white;
+  background-color: #fd576c;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* box-shadow: 0 0 0 6px rgb(253 87 108 / 25%); */
+  transition: box-shadow 0.3s, background-color 0.3s;
+  cursor: pointer;
+  :hover {
+    background-color: gold;
+  }
+  color: #fff;
+  border-color: #fd435a;
+  font-size: 15px;
+  font-style: normal;
+  text-align: center;
+  font-weight: 500;
   width: 200px;
-  /* margin-bottom: 10px; */
 `;
 export default function GuestInputField({
   listUpdate,

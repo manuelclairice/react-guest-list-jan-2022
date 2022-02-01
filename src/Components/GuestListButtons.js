@@ -3,22 +3,33 @@ import { css } from '@emotion/react';
 
 const filterStyle = css`
   display: flex;
-  /* display: flex; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   flex-direction: column;
   align-items: center;
   /* padding: 50px; */
   margin-bottom: 50px;
 `;
 const filterButtonStyle = css`
-  width: 150px;
-  background-color: #fff;
+  height: 45px;
   border-radius: 10px;
-  color: #000;
-  margin: 1px;
-  padding: 2px;
+  background-color: #fd576c;
+  border-color: #fd435a;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* box-shadow: 0 0 0 6px rgb(253 87 108 / 25%); */
+  transition: box-shadow 0.3s, background-color 0.3s;
+  cursor: pointer;
+  :hover {
+    background-color: gold;
+  }
+  color: #fff;
+  font-size: 15px;
+  font-style: bold;
+  text-align: center;
+  font-weight: 500;
+  width: 200px;
 `;
 const deleteButtonStyle = css`
-  width: 150px;
+  width: 100px;
   background-color: red;
   border-radius: 10px;
   color: #fff;

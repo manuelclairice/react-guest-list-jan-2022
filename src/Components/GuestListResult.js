@@ -8,34 +8,42 @@ const listDivStyle = css`
 `;
 const pStyle = css`
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 const deleteButtonStyle = css`
   border-radius: 5px;
   background-color: #fff;
   border: 0.5px solid;
   padding: 1 2.5px;
+  cursor: pointer;
+  :hover {
+    background-color: grey;
+  }
 `;
 const listItemGridStyle = css`
-  background-color: #f5f5f5;
+  background-color: #eee;
   width: 300;
   padding: 5px 50px;
   border-bottom: solid 1px black;
   border-top: solid 1px black;
   border-right: solid 1px black;
   border-left: solid 1px black;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 2px 4px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 const listGridStyle = css`
   display: grid;
   justify-content: stretch;
-  background-color: #f5f5f5;
+  background-color: #eee;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 
 const listStyle = css`
   list-style-type: none;
   display: flex;
   flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 
 export default function GuestList({
