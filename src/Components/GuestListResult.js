@@ -66,20 +66,20 @@ export default function GuestList({
                     <button
                       css={deleteButtonStyle}
                       onClick={async () => {
-                        await fetch(`${baseUrl}${guest.id}`, {
+                        await fetch(`${baseUrl}/guests/${guest.id}`, {
                           method: 'DELETE',
                         });
                         setListUpdate(!listUpdate);
                       }}
                     >
                       {' '}
-                      Delete Guest{' '}
+                      Remove{' '}
                     </button>
                     <button
                       css={deleteButtonStyle}
                       onClick={async () => {
-                        await fetch(`${baseUrl}${guest.id}`, {
-                          method: 'PATCH',
+                        await fetch(`${baseUrl}/guests/${guest.id}`, {
+                          method: 'PUT',
                           headers: {
                             'Content-Type': 'application/json',
                           },

@@ -16,7 +16,7 @@ const bodyStyle = css`
   height: 100vh;
 `;
 export function App() {
-  const baseUrl = 'https://manuel-guest.herokuapp.com';
+  const baseUrl = 'https://manuel-react-guestlist-jan2022.herokuapp.com';
 
   const [guestList, setGuestList] = useState([]);
   const [newGuestList, setNewGuestList] = useState([]);
@@ -25,25 +25,29 @@ export function App() {
   const [filter, setFilter] = useState('all Guests:');
 
   useEffect(() => {
-    fetch(`${baseUrl}/`).then(
-      (x) =>
-        x.json().then((data) => {
-          setGuestList(data);
-          setNewGuestList(data);
-        }),
-      setFetch1(false),
-    );
+    fetch(`${baseUrl}/guests`)
+      .then(
+        (x) =>
+          x.json().then((data) => {
+            setGuestList(data);
+            setNewGuestList(data);
+          }),
+        setFetch1(false),
+      )
+      .catch((err) => {
+        console.error(err);
+      });
   }, [listUpdate]);
 
   if (fetch1) {
     return (
       <div>
-        <h1 css={loadingDiv}>Loading the Guest List....</h1>
+        <h1 css={loadingDiv}>Loading....</h1>
       </div>
     );
   }
   return (
-    <body css={bodyStyle}>
+    <div css={bodyStyle}>
       <div data-test-id="guest">
         <GuestListInput
           baseUrl={baseUrl}
@@ -70,7 +74,7 @@ export function App() {
           guestList={guestList}
         />
       </div>
-    </body>
+    </div>
   );
 }
 

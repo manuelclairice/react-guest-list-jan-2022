@@ -15,8 +15,8 @@ const formStyle = css`
 
 const inputStyle = css`
   color: grey;
-  display: block;
-  width: 150px;
+  display: inline-flex;
+  width: 200px;
   height: 40px;
   /* margin-bottom: 20px; */
   padding-left: 10px;
@@ -26,9 +26,9 @@ const buttonStyle = css`
   height: 45px;
   /* border: none; */
   border-radius: 10px;
-  background-color: #fff;
-  color: #000;
-  width: 100px;
+  background-color: #008a00;
+  color: white;
+  width: 200px;
   /* margin-bottom: 10px; */
 `;
 export default function GuestInputField({
@@ -46,25 +46,25 @@ export default function GuestInputField({
           css={inputStyle}
           // type="text"
           value={firstName}
-          placeholder="Enter First Name"
-          onChange={(e) => {
-            setFirstName(e.currentTarget.value);
+          placeholder="First Name"
+          onChange={(event) => {
+            setFirstName(event.currentTarget.value);
           }}
         />
         <input
           css={inputStyle}
           // type="text"
           value={lastName}
-          placeholder="Enter Last Name"
-          onChange={(e) => {
-            setLastName(e.currentTarget.value);
+          placeholder="Last Name"
+          onChange={(event) => {
+            setLastName(event.currentTarget.value);
           }}
         />
         <button
           css={buttonStyle}
-          onClick={async (e) => {
-            e.preventDefault();
-            await fetch(`${baseUrl}/`, {
+          onClick={async (event) => {
+            event.preventDefault();
+            await fetch(`${baseUrl}/guests`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
