@@ -20,12 +20,12 @@ const inputStyle = css`
   height: 40px;
   /* margin-bottom: 20px; */
   padding-left: 10px;
-  border-radius: 2px;
+  border-radius: 10px;
 `;
 const buttonStyle = css`
   height: 45px;
   /* border: none; */
-  border-radius: 3px;
+  border-radius: 10px;
   background-color: #fff;
   color: #000;
   width: 100px;
@@ -44,7 +44,7 @@ export default function GuestInputField({
       <form css={formStyle}>
         <input
           css={inputStyle}
-          type="text"
+          // type="text"
           value={firstName}
           placeholder="Enter First Name"
           onChange={(e) => {
@@ -53,7 +53,7 @@ export default function GuestInputField({
         />
         <input
           css={inputStyle}
-          type="text"
+          // type="text"
           value={lastName}
           placeholder="Enter Last Name"
           onChange={(e) => {
@@ -64,7 +64,7 @@ export default function GuestInputField({
           css={buttonStyle}
           onClick={async (e) => {
             e.preventDefault();
-            await fetch(`${baseUrl}`, {
+            await fetch(`${baseUrl}/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
