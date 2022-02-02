@@ -6,8 +6,8 @@ const filterStyle = css`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   flex-direction: column;
   align-items: center;
-  /* padding: 50px; */
   margin-bottom: 50px;
+  color: #fff;
 `;
 const filterButtonStyle = css`
   height: 45px;
@@ -15,7 +15,6 @@ const filterButtonStyle = css`
   background-color: #fd576c;
   border-color: #fd435a;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* box-shadow: 0 0 0 6px rgb(253 87 108 / 25%); */
   transition: box-shadow 0.3s, background-color 0.3s;
   cursor: pointer;
   :hover {
@@ -29,10 +28,22 @@ const filterButtonStyle = css`
   width: 200px;
 `;
 const deleteButtonStyle = css`
-  width: 100px;
-  background-color: red;
+  height: 45px;
   border-radius: 10px;
+  background-color: #fd576c;
+  border-color: #fd435a;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: box-shadow 0.3s, background-color 0.3s;
+  cursor: pointer;
+  :hover {
+    background-color: gold;
+  }
   color: #fff;
+  font-size: 15px;
+  font-style: bold;
+  text-align: center;
+  font-weight: 500;
+  width: 200px;
   margin: 20px;
   padding: 2px;
 `;
@@ -94,7 +105,9 @@ export default function GuestListButtons({
         >
           {' '}
           Delete All{' '}
-          {/* css={deleteButtonStyle}
+          {/* THIS IS A BIT TOO ADVANCED, WOULD WORK WITH A "FOR AWAIT(OF) STATEMENT
+
+          ss={deleteButtonStyle}
           onClick={async () => {
             guestList.map(async (guest) => {
               await fetch(`${baseUrl}${guest.id}`, {
