@@ -20,7 +20,7 @@ export function App() {
 
   const [guestList, setGuestList] = useState([]);
   const [newGuestList, setNewGuestList] = useState([]);
-  const [fetch1, setFetch1] = useState(true);
+  const [fetch1, setFetch1] = useState(false);
   const [listUpdate, setListUpdate] = useState(true);
   const [filter, setFilter] = useState('all Guests:');
 
