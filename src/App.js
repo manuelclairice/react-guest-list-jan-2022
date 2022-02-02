@@ -27,8 +27,8 @@ export function App() {
   useEffect(() => {
     fetch(`${baseUrl}/guests`)
       .then(
-        (x) =>
-          x.json().then((data) => {
+        (guestListApp) =>
+          guestListApp.json().then((data) => {
             setGuestList(data);
             setNewGuestList(data);
           }),
@@ -42,7 +42,7 @@ export function App() {
   if (fetch1) {
     return (
       <div>
-        <h1 css={loadingDiv}>Loading....</h1>
+        <h1 css={loadingDiv}>Loading...</h1>
       </div>
     );
   }
