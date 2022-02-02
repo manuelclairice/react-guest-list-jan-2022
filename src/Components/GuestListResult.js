@@ -9,6 +9,7 @@ const listDivStyle = css`
 const pStyle = css`
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #fff;
 `;
 const deleteButtonStyle = css`
   border-radius: 5px;
