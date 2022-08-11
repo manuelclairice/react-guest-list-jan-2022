@@ -2200,10 +2200,10 @@
   resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.4.0.tgz#c3c488e4b35a37645645a7e0e0df104a00c51618"
   integrity sha512-R/tko0R8GJntbKno/yaLaGXZFB1qQ95jLKa3qkkRpc1WkzVKtD9HQhMhB2wxWnB0CKld7Ivj0WyyR8WE/Nh0VA==
 
-"@upleveled/eslint-plugin-upleveled@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-plugin-upleveled/-/eslint-plugin-upleveled-2.1.0.tgz#cd27a58c2be3de9ac1091ff5214452a1b07bf803"
-  integrity sha512-bjBd/UptN9+eIZeXfmc/EXInz802UBdYT+cow81ygA1rMlshsi2hVIsboBgeTnPqvBbLfXPVkOHUHJmuX2Y2Zg==
+"@upleveled/eslint-plugin-upleveled@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-plugin-upleveled/-/eslint-plugin-upleveled-2.1.5.tgz#2f441c2b38ec4f8ab07a71e310d437ee9810571d"
+  integrity sha512-9n/M47/d4ENnS0VFfL9CSUlWk+4tBCj9/xxe96HyabgTWCHO8VbY16TgELFqGT2lHotJcaIw2OY+9/qG060KTw==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
