@@ -49,7 +49,7 @@
     "@upleveled/eslint-config-upleveled": "2.4.0",
     "@upleveled/eslint-plugin-upleveled": "2.1.0",
     "eslint": "8.14.0",
-    "eslint-config-react-app": "7.0.0",
+    "eslint-config-react-app": "7.0.1",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-flowtype": "8.0.3",
